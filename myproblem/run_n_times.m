@@ -32,8 +32,8 @@ end
 %% --------- 目标点1 ----------
 opts.tar.POS_e = POS_e1;
 opts.tar.ORI_e = ORI_e1;
-start_t = 8
-end_t   = 10
+start_t = 18
+end_t   = 50
 for runIdx = start_t:end_t
     fprintf('Running iteration %d / %d...\n', runIdx - start_t + 1, end_t - start_t + 1);
     result = solve_MOEA_robot(opts);
