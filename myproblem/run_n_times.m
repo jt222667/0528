@@ -30,23 +30,23 @@ if ~exist(dataFolder, 'dir')
 end
 
 %% --------- 目标点1 ----------
-opts.tar.POS_e = POS_e1;
-opts.tar.ORI_e = ORI_e1;
-start_t = 18
-end_t   = 50
-for runIdx = start_t:end_t
-    fprintf('Running iteration %d / %d...\n', runIdx - start_t + 1, end_t - start_t + 1);
-    result = solve_MOEA_robot(opts);
-    saveFile = fullfile(dataFolder, sprintf('result_run_%d.mat', runIdx));
-    save(saveFile, 'result');
-end
-disp('All runs completed and saved in the data folder.');
+% opts.tar.POS_e = POS_e1;
+% opts.tar.ORI_e = ORI_e1;
+% start_t = 40
+% end_t   = 100
+% for runIdx = start_t:end_t
+%     fprintf('Running iteration %d / %d...\n', runIdx - start_t + 1, end_t - start_t + 1);
+%     result = solve_MOEA_robot(opts);
+%     saveFile = fullfile(dataFolder, sprintf('result_run_%d.mat', runIdx));
+%     save(saveFile, 'result');
+% end
+% disp('All runs completed and saved in the data folder.');
 
 %% --------- 目标点2 ----------
 opts.tar.POS_e = POS_e2;
 opts.tar.ORI_e = ORI_e2;
-start_t = 101
-end_t   = 120
+start_t = 121
+end_t   = 150
 for runIdx = start_t:end_t
     fprintf('Running iteration %d / %d...\n', runIdx - start_t + 1, end_t - start_t + 1);
     result = solve_MOEA_robot(opts);
