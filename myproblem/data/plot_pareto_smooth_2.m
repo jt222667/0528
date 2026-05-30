@@ -1,4 +1,9 @@
-function plot_pareto_smooth_2(data)
+function plot_pareto_smooth_2(data, text_pos)
+
+if nargin < 2
+    text_pos = [3, -0.0008, 10.6]; % 默认位置
+end
+
 
 %% =========================
 % 数据拆分
@@ -27,7 +32,7 @@ colors(1,:) = [0.55 0.00 0.80];
 % 图窗设置
 %% =========================
 figure('Color','w', ...
-       'Position',[100,100,930,780]);
+    'Position',[100,100,930,780]);
 
 hold on;
 grid on;
@@ -75,10 +80,10 @@ for i = 1:length(unique_z)
 
         % 平滑插值
         xx = linspace(min(xi_unique), ...
-                      max(xi_unique), 250);
+            max(xi_unique), 250);
 
         yy = interp1(xi_unique, yi_unique, ...
-                     xx, 'pchip');
+            xx, 'pchip');
 
         zz = unique_z(i) * ones(size(xx));
 
@@ -163,9 +168,6 @@ xl = xlabel('可操作度指标', ...
 
 set(xl,'Rotation',24);
 
-
-
-
 zlabel('结构复杂度指标', ...
     'FontSize',   22, ...
     'FontWeight', 'normal', ...
@@ -182,10 +184,18 @@ xlim([min(x)-pad_x, max(x)+pad_x]);
 ylim([min(y)-pad_y, max(y)+pad_y]);
 zlim([min(z)-pad_z, max(z)+pad_z]);
 
+%% =========================
+% 文本标签（可通过 text_pos 调整位置）
+%% =========================
+if nargin < 2
+    % 默认位置
+    text_pos = [3, -0.0008, 10.6];
+end
+
 text( ...
-    3 , ...      % x位置
-    (min(y)+max(y))/2-0.0008 , ...    % y位置
-    10.6 , ...      % z位置
+    text_pos(1), ...
+    (min(y)+max(y))/2 + text_pos(2), ...
+    text_pos(3), ...
     '最大定位误差指标', ...
     'FontSize',22,...
     'FontWeight','normal',...
@@ -205,4 +215,3 @@ view(135,25);
 hold off;
 
 end
-
