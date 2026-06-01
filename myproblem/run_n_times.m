@@ -2,8 +2,8 @@ clc; clear;
 
 % --------- 配置参数 ----------
 opts = struct();
-opts.PopulationSize = 100;
-opts.MaxGenerations = 10;
+opts.PopulationSize = 300;
+opts.MaxGenerations = 20;
 opts.UseParallel = true;
 
 % 任务1目标点：装配
