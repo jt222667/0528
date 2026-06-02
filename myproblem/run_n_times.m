@@ -2,7 +2,7 @@ clc; clear;
 
 %% --------- 配置参数 ----------
 opts = struct();
-opts.PopulationSize = 200;
+opts.PopulationSize = 100;
 opts.MaxGenerations = 10;
 opts.UseParallel = true;
 
@@ -81,7 +81,7 @@ end
 %% --------- 目标点4 ----------
 opts.tar.POS_e = POS_e4;
 opts.tar.ORI_e = ORI_e4;
-start_t = 401
+start_t = 404
 end_t   = 500
 for runIdx = start_t:end_t
     fprintf('Running iteration %d / %d...\n', runIdx - start_t + 1, end_t - start_t + 1);
