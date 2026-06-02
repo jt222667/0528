@@ -1,7 +1,7 @@
 
 RP_data = Module_Lib();
 
-i = 3;
+i = 2;
 
 re0 = result_final.x;
 [~, idx1] = sort(result_final.fval(:,1));
@@ -9,8 +9,11 @@ re1 = result_final.fval(idx1,:);
 [~, idx2] = sort(result_final.fval(:,2));
 re2 = result_final.fval(idx2,:);
 [~, idx3] = sort(result_final.fval(:,3));
-re3 = result_final.fval(idx3,:);
 idx = [idx1(1),  idx2(1),  idx3(1)];
+re3 = result_final.fval(idx3,:);
+
+re01 = result_final.x(idx1,:);
+re02 = result_final.x(idx2,:);
 re03 = result_final.x(idx3,:);
 
 %% 构型输入
