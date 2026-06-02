@@ -5,8 +5,8 @@ clear;
 %% 目标点设置
 
 % 目标点1：装配
-% tar.POS_e = [2 0 2]';
-% tar.ORI_e = cy(pi);
+% tar.POS_e = [1.8 0 1.8]';
+% tar.ORI_e = cy(pi/2);
 
 % 目标点2：爬行
 % T2 = [cx(-2*pi/3) [0;0;0];0 0 0 1]*[cx(pi) [0;-2;-2];0 0 0 1];
@@ -14,9 +14,17 @@ clear;
 % tar.ORI_e = T2(1:3,1:3);
 
 % 目标点3：抓取
-T3 = [cy(pi) [1.5;0;0.5];0 0 0 1];
-tar.POS_e = T3(1:3,4);
-tar.ORI_e = T3(1:3,1:3);
+% T3 = [cy(pi) [1.5;0;0.5];0 0 0 1];
+% tar.POS_e = T3(1:3,4);
+% tar.ORI_e = T3(1:3,1:3);
+
+R4 = [-1 0 0;0 0 1;0 1 0];
+P4 = [1;-1;-1];
+T4_1 = [R4,P4;0 0 0 1];
+T4_2 = [cx(-2*pi/3) [0;0;0]; 0 0 0 1];
+T4 = T4_2 * T4_1 ;
+tar.POS_e = T4(1:3,4);
+tar.ORI_e = T4(1:3,1:3);
 
 %% 模块库初始化
 RP_data = Module_Lib();
@@ -29,8 +37,8 @@ RP_data = Module_Lib();
 %% 机器人初始化
 LP = LP_generate(module_out, install_out, align_out, sequence_out, RP_data);
 
-% mq = [1 2 1 2 1 2 1];iq = [1 1 1 1 1 1 1];aq = [0 0 0 0 0 0 0];sq = [0 1 2 3 4 5 6];
-% LP = LP_generate(mq, iq, aq, sq, RP_data);
+mq = [1 2 1 2 1 2 1];iq = [1 1 1 1 1 1 1];aq = [0 0 0 0 0 0 0];sq = [0 1 2 3 4 5 6];
+LP = LP_generate(mq, iq, aq, sq, RP_data);
 
 SV = SV_generate(LP);
 

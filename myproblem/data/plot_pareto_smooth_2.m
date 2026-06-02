@@ -8,7 +8,7 @@ end
 %% =========================
 % 数据拆分
 %% ========================= 
-x = data(:,1);
+x = -data(:,1);
 y = data(:,2);
 z = data(:,3);
 
@@ -166,7 +166,7 @@ xl = xlabel('可操作度指标', ...
     'FontWeight', 'normal', ...
     'FontName',   '宋体');
 
-set(xl,'Rotation',24);
+set(xl,'Rotation',-24);
 
 zlabel('结构复杂度指标', ...
     'FontSize',   22, ...
@@ -189,18 +189,18 @@ zlim([min(z)-pad_z, max(z)+pad_z]);
 %% =========================
 if nargin < 2
     % 默认位置
-    text_pos = [3, -0.0008, 10.6];
+    text_pos = [-4.7, 0.0077, 13];
 end
 
 text( ...
     text_pos(1), ...
-    (min(y)+max(y))/2 + text_pos(2), ...
+    text_pos(2), ...
     text_pos(3), ...
     '最大定位误差指标', ...
     'FontSize',22,...
     'FontWeight','normal',...
     'FontName','宋体',...
-    'Rotation',-24);
+    'Rotation',24);
 
 %% =========================
 % 视图与光照
@@ -210,7 +210,7 @@ axis normal;
 camlight headlight;
 lighting gouraud;
 
-view(135,25);
+view(225,25);
 
 hold off;
 
