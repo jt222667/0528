@@ -64,7 +64,7 @@ k = 5;
 opts.tar.POS_e = POS{k};
 opts.tar.ORI_e = ORI{k};
 start_t = 501;
-end_t   = 520;
+end_t   = 550;
 for runIdx = start_t:end_t
     fprintf('Running iteration %d / %d...\n', runIdx - start_t + 1, end_t - start_t + 1);
     result = solve_MOEA_robot(opts);
