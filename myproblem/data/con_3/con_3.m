@@ -13,7 +13,7 @@ re1 = result_final.fval(idx1,:);
 re2 = result_final.fval(idx2,:);
 [~, idx3] = sort(result_final.fval(:,3));
 re3 = result_final.fval(idx3,:);
-idx = [idx1(1),  idx2(1),  idx3(1)];
+idx = [idx1(1),  idx2(1),  idx3(2)];
 re03 = result_final.x(idx3,:);
 
 %% 构型输入
@@ -21,6 +21,7 @@ x_tmp = re0(idx(i),:);
 m_all = x_tmp(2:1+x_tmp(1));
 i_all = ones(length(m_all),1);
 a_all = x_tmp(16:15+x_tmp(1));
+
 s_all = 0:length(m_all)-1;
 
 %% 构型解码
@@ -34,6 +35,7 @@ SV = Trans_aa_pos_ori(LP,SV,q0);
 PlotSV(LP,SV);
 
 %% 目标点初始化【左臂】404 401 404
+
 % R4 = [-1 0 0;0 0 1;0 1 0];
 % P4 = [1;-1;-1];
 % T4_1 = [R4,P4;0 0 0 1];
@@ -41,13 +43,18 @@ PlotSV(LP,SV);
 % T4 = T4_2 * T4_1 ;
 % POS_e4 = T4(1:3,4);
 % ORI_e4 = T4(1:3,1:3);
-% 
+
+% T4 = [-1 0 0 1;0 0.866 -0.5 -0.366;0 -0.5 -0.866 1.166; 0 0 0 1];
+% POS_e4 = T4(1:3,4);
+% ORI_e4 = T4(1:3,1:3);
+
 % Goal = Goal_init(SV);
 % Goal.change = [1 0 0];
 % Goal.POS_e{1} = POS_e4;
 % Goal.ORI_e{1} = ORI_e4;
 
-%% 目标点初始化【左臂】501~600
+%% 目标点初始化【右臂】401 401 404
+
 R5 = [-1 0 0;0 0 -1;0 -1 0];
 P5 = [1;1;-1];
 T5_1 = [R5,P5;0 0 0 1];
@@ -55,6 +62,10 @@ T5_2 = [cx(2*pi/3) [0;0;0]; 0 0 0 1];
 T5 = T5_2 * T5_1 ;
 POS_e5 = T5(1:3,4);
 ORI_e5 = T5(1:3,1:3);
+
+% T5 = [-1 0 0 1;0 0.866 0.5 0.566;0 0.5 -0.866 1.166; 0 0 0 1];
+% POS_e5 = T5(1:3,4);
+% ORI_e5 = T5(1:3,1:3);
 
 Goal = Goal_init(SV);
 Goal.change = [1 0 0];
