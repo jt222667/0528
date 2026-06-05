@@ -26,7 +26,7 @@ q_lb = zeros(SV.singleArm_joints(k),1);
 q_ub = 2*pi*ones(SV.singleArm_joints(k),1);
 % q_lb(2) = -1.658; q_ub(1) = 1.658;
 % q_lb(4) = -1.658; q_ub(4) = 1.658;
-q_lb(6) = -1.658; q_ub(6) = 1.658;
+% q_lb(6) = -1.658; q_ub(6) = 1.658;
 
 parfor m = 1:num_trials
 

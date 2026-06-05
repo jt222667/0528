@@ -7,8 +7,8 @@ end
 
 %% --------- 配置参数 ----------
 opts = struct();
-opts.PopulationSize = 100;
-opts.MaxGenerations = 10;
+opts.PopulationSize = 200;
+opts.MaxGenerations = 20;
 opts.UseParallel = true;
 POS = cell(1,10);
 ORI = cell(1,10);
@@ -57,14 +57,18 @@ ORI_e5 = T5(1:3,1:3);
 POS{5} = POS_e5;
 ORI{5} = ORI_e5;
 
+%% 任务3目标点fac：搬运大负载_右臂【501~600】
+POS{6} = [1;0.3660;1.2645];
+ORI{6} = [-1,-5.7176e-15,2.1619e-13;1.0325e-13,0.8660,0.5000;-1.8996e-13,0.5000,-0.8660];
+
 %% 1~54成为补充素材
 
 %% --------- 目标点1 ----------
-k = 5;
+k = 6;
 opts.tar.POS_e = POS{k};
 opts.tar.ORI_e = ORI{k};
-start_t = 501;
-end_t   = 550;
+start_t = 601;
+end_t   = 650;
 for runIdx = start_t:end_t
     fprintf('Running iteration %d / %d...\n', runIdx - start_t + 1, end_t - start_t + 1);
     result = solve_MOEA_robot(opts);
